@@ -1,0 +1,12 @@
+<aside class="main-sidebar">
+  <section class="sidebar" style="height: auto;">
+    <ul class="sidebar-menu">
+      <li class="header">MAIN NAVIGATION</li>
+      <li ng-repeat="item in mainSidebar.menu.items" ui-sref-active="active">
+        <a ui-sref="{{item.state}}">
+          <i class="{{item.class}}"></i> <span ng-bind="item.title"></span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</aside>

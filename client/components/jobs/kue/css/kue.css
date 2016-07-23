@@ -1,0 +1,29 @@
+.kue-list-jobs .dataTables_wrapper {
+  padding-top: 10px;
+}
+
+.kue-list-jobs .dataTables_wrapper .dataTables_length {
+  float: left;
+}
+
+.kue-list-jobs .dataTables_wrapper table.dataTable thead .sorting_asc:after {
+  display: none;
+}
+
+.kue-list-jobs .states-dropdown span {
+  text-transform: capitalize;
+}
+
+.kue-list-jobs .types-dropdown ul,
+.kue-list-jobs .states-dropdown ul {
+  min-width: 200px;
+}
+
+.view-job-details p > strong {
+  min-width: 70px; display: inline-block;
+}
+
+.label.label-inactive {
+  color: #fff;
+  background-color: #999;
+}

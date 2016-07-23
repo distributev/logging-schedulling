@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div class="row">
+    <div ng-class="kueJobsCtrl.selectedJobIds.length > 0 ? 'col-md-8' : 'col-md-12'">
+      <list-jobs ontoggle="kueJobsCtrl.ontoggle(selectedJobs)" job-type="{{ jobType }}"></list-jobs>
+    </div>
+    <div class="col-md-4" ng-if="kueJobsCtrl.selectedJobIds.length > 0">
+      <div ng-repeat="jobId in kueJobsCtrl.selectedJobIds track by jobId">
+        <view-job-details job-id="jobId" onclose="kueJobsCtrl.onclose(jobId)"></view-job-details>
+      </div>
+    </div>
+  </div>
+</div>

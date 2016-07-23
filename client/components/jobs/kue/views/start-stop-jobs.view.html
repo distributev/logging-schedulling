@@ -1,0 +1,29 @@
+<div class="jumbotron">
+  <h3 class="text-center">Job Processing is currently <span ng-if="startStopJobsCtrl.jobProcessingStatus === true">ON</span><span ng-if="startStopJobsCtrl.jobProcessingStatus !== true">OFF</span></h3>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="btn-group btn-block" uib-dropdown is-open="status.isopen">
+        <button id="single-button" type="button" class="btn btn-default btn-block" uib-dropdown-toggle ng-disabled="disabled">
+          <i class="fa fa-pause" aria-hidden="true"></i> Pause Jobs <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" style="right: 0;" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li role="menuitem">
+            <a href="#"><span>Pause All Jobs</span></a>
+          </li>
+          <li class="divider"></li>
+          <li role="menuitem" ng-repeat="jobType in startStopJobsCtrl.jobTypes">
+            <a href="#">Pause '<span ng-bind="jobType"></span>' Jobs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <button class="btn btn-default btn-block" ng-click="startStopJobsCtrl.shutDownAllJobs()" ng-if="startStopJobsCtrl.jobProcessingStatus === true">
+      <i class="fa fa-stop" aria-hidden="true"></i> Stop All Jobs
+      </button>
+      <button class="btn btn-default btn-block" ng-click="startStopJobsCtrl.startAllJobs()" ng-if="startStopJobsCtrl.jobProcessingStatus !== true">
+        <i class="fa fa-play" aria-hidden="true"></i> Start All Jobs
+      </button>
+    </div>
+  </div>
+</div>
