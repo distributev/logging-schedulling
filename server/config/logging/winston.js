@@ -1,136 +1,106 @@
-/*Winston setup file*/
-/*set up log path*/
-/*work to complete */
-/*Work on formatter function to produce msg pattern: %d{dd/MM/yyyy HH:mm:ss} %p - %m%n*/
-/*Log rotate files */
-
+/*next work,make logger automatically accessible*/
 "use strict"
 const winston = require("winston");
 const fs = require('fs');
 const path = require("path");
 const dirPath = path.dirname(path.dirname(__dirname));
 const fullPath = path.join(dirPath,"/logs");
-const debug = false;
-var logDirExist = false;
+const   DEBUG = false;
+//steps to accomplish 
+//create categories for each log level
+//formating files
 
-//setting up logger
-var logger = new winston.Logger({
-    transports: [
-        new winston.transports.File({
-        	name :'file-info',
-            level: 'info',
-            filename: '../../logs/info.log',
-            handleExceptions: true,
-            json: false,
-            maxSize: 10485760, 
-            maxFiles: 10,
-            prettyPrint :true,
-            formatter : formatter
-            
-        }),
-        new winston.transports.File({
-        	name :'file-debug',
-            level: 'debug',
-            filename: '../../logs/debug.log',
-            handleExceptions: true,
-            json: false,
-            maxSize: 10485760, 
-            maxFiles: 10,
-            prettyPrint :true,
-            formatter : formatter
-            
-        }),
-         new winston.transports.File({
-         	name :'file-error',
-            level: 'error',
-            filename: '../../logs/error.log',
-            handleExceptions: true,
-            json: false,
-            maxSize: 10485760, 
-            maxFiles: 10,
-            prettyPrint :true,
-            formatter : formatter
-            
-        }),
-          new winston.transports.File({
-            name :'file-warn',
-            level: 'warn',
-            filename: '../../logs/warnings.log',
-            handleExceptions: true,
-            json: false,
-            maxSize: 10485760, 
-            maxFiles: 10,
-            prettyPrint :true,
-            formatter : formatter
-           
-        })
-    ],
-    exitOnError: false
-});
-
-
-var log = {
-	debug : function(msg){
-		logFxn(logger,msg,"debug");
-	},
-	info : function(msg){
-		logFxn(logger,msg,"info");
-	},
-	warning : function(msg){
-		logFxn(logger,msg,"warn");
-	},
-	error : function(msg){
-		logFxn(logger,msg,"error");
-	}
-}
-
-var formatter = function(options){
-	return options.timestamp() +' ['+ options.level.toUpperCase() +'] '+ (undefined !== options.message ? options.message : '') +
-     (options.meta && Object.keys(options.meta).length ? '\n\t'+ JSON.stringify(options.meta) : '' );
-}
-
-var setup = function(){
-	
-	if (!fs.existsSync(fullPath)) {
+//create log directory if not exists
+if (!fs.existsSync(fullPath)) {
       fs.mkdirSync(fullPath);
-      logDirExist = true;
-}else{
-	logDirExist = true;
-}
-   
-  if(logDirExist){
-  		return true;
-  }else{
-     return false;	
-  }
-  
-};
- var logFxn = function(logger,msg,level){
-      if(setup()){
-      	switch(level){
-     	case "info":
-            
-     		logger.info(msg);
-     		break;
-     	case "debug":
-     	   if(debug){
-     		 logger.debug(msg);
-     		}else{//exception will be added subsequently
-     			
-     			logger.log(msg);
-     		}
-     	    break
-     	case "error":
-     		logger.error(msg);
-     		break;
-     	case "warning":
-     	    logger.warn(msg);
-     	     break;
-     	default:
-     	    logger.log(msg);
-     }
-
+    }  
+//format time
+function formatter(options){
+     // Return string will be passed to logger. 
+    return options.timestamp() +' '+ options.level.toUpperCase() +' - ********'+ (undefined !== options.message ? options.message : '') +
+         ' - ' + (options.meta && Object.keys(options.meta).length ? '\t'+ JSON.stringify(options.meta) + '******': '' );
       }
-     
 }
+//format timestamp
+function tsFormatz(){
+    var timestamp = new Date();
+    var date = timestamp.toLocalDateString();
+    var time = timestamp.toLocalTimeString();
+    return date + " " + time;
+}
+
+  // Configure the logger for `info` 
+winston.loggers.add('info', {
+    transports :[
+       new (require('winston-daily-rotate-file'))({
+            filename: '../../logs/info.log',
+            timestamp: tsFormatz,
+            datePattern: 'dd-MM-yyyy',
+            prepend: true,
+            level: 'info',
+            formatter:formatter
+        })
+    ]
+  });
+winston.loggers.add('warn', {
+    transports :[
+       new (require('winston-daily-rotate-file'))({
+            filename: '../../logs/warn.log',
+            timestamp: tsFormat,
+            datePattern: 'dd-MM-yyyy',
+            prepend: true,
+            level: 'warn',
+            formatter:formatter
+        })
+    ]
+  });
+winston.loggers.add('error', {
+    transports :[
+       new (require('winston-daily-rotate-file'))({
+            filename: '../../logs/error.log',
+            timestamp: tsFormat,
+            datePattern: 'dd-MM-yyyy',
+            prepend: true,
+            level: 'error',
+            formatter:formatter
+        })
+    ]
+  });
+if(DEBUG){
+     winston.loggers.add('debug', {
+    transports :[
+       new (require('winston-daily-rotate-file'))({,
+            formatter:formatter
+            filename: '../../logs/debug.log',
+            timestamp: tsFormat,
+            datePattern: 'dd-MM-yyyy',
+            prepend: true,
+            level: 'debug',
+            formatter:formatter
+        })
+    ]
+  });
+     }
+//log object
+var log = {};
+
+
+
+log.prototype.info = function(arg1){
+    var logger = winston.loggers.get('info');
+     logger.info.apply(this,arguments);
+} ;
+log.prototype.warn = function(arg1){
+    var logger = winston.loggers.get('warn');
+     logger.warn.apply(this,arguments);
+} ;
+log.prototype.error = function(arg1){
+    var logger = winston.loggers.get('error');
+     logger.error.apply(this,arguments);
+} ;
+log.prototype.debug = function(arg1){
+    var logger = winston.loggers.get('debug');
+     logger.debug.apply(this,arguments);
+} ;
+
 module.exports = log;

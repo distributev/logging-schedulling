@@ -30,7 +30,7 @@ angular.module('angularFullstackApp', ['angularFullstackApp.auth', 'angularFulls
         roles: ['user'],
         class: 'fa fa-files-o'
       });
-
+      
       menuService.addMenuItem('nav', {
         title: 'Jobs',
         state: 'jobs.all',
@@ -38,21 +38,66 @@ angular.module('angularFullstackApp', ['angularFullstackApp.auth', 'angularFulls
         roles: ['user'],
         class: 'fa fa-check-square-o'
       });
-
-      menuService.addMenuItem('nav', {
+       menuService.addMenuItem('nav', {
+        title: 'Flows',
+        state: 'scripts.all',
+        type: 'dropdown',
+        roles: ['user'],
+        class: 'fa fa-file-code-o'
+      });
+     menuService.addSubMenuItem('nav' , 'jobs.all' ,{
+           title: 'All',
+           state: 'jobs.all',
+           roles: ['user'],
+           type: 'item',
+           class: 'fa fa-check-square-o'
+       });
+      menuService.addSubMenuItem('nav', 'jobs.all',{
         title: 'Email Jobs',
         state: 'jobs.type({jobType:"email"})',
-        type: 'dropdown',
+        type: 'item',
         roles: ['user'],
         class: 'fa fa-envelope-o'
       });
 
-      menuService.addMenuItem('nav', {
+      menuService.addSubMenuItem('nav','jobs.all', {
         title: 'Start/Stop Jobs',
         state: 'jobs.startStop',
-        type: 'dropdown',
+        type: 'item',
         roles: ['user'],
         class: 'fa fa-play'
+      });
+     
+
+      menuService.addSubMenuItem('nav','scripts.all', {
+        title: 'All',
+        state: 'scripts',
+        type: 'item',
+        roles: ['user'],
+        class: 'fa fa-file-code-o'
+      });
+
+      menuService.addSubMenuItem('nav','scripts.all', {
+        title: 'Startup',
+        state: 'scripts.type({scriptType:"startUp"})',
+        type: 'item',
+        roles: ['user'],
+        class: 'fa fa-arrow-circle-up'
+      });
+
+      menuService.addSubMenuItem('nav','scripts.all', {
+        title: 'Shutdown',
+        state: 'scripts.type({scriptType:"shutDown"})',
+        type: 'item',
+        roles: ['user'],
+        class: 'fa fa-arrow-circle-down'
+      });
+       menuService.addSubMenuItem('nav','scripts.all', {
+        title: 'Schedules',
+        state: 'scripts.type({scriptType:"schedules"})',
+        type: 'item',
+        roles: ['user'],
+        class: 'fa fa-calender-check-o'
       });
 
     }]);
