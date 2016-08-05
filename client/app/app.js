@@ -71,7 +71,7 @@ angular.module('angularFullstackApp', ['angularFullstackApp.auth', 'angularFulls
 
       menuService.addSubMenuItem('nav','scripts.all', {
         title: 'All',
-        state: 'scripts',
+        state: 'scripts.all',
         type: 'item',
         roles: ['user'],
         class: 'fa fa-file-code-o'

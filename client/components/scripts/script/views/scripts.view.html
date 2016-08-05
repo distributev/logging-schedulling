@@ -1,11 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div ng-class="ScriptsCtrl.selectedScriptIds.length > 0 ? 'col-md-8' : 'col-md-12'">
-      <list-jobs ontoggle="kueJobsCtrl.ontoggle(selectedJobs)" job-type="{{ jobType }}"></list-jobs>
+    <div ng-class="ScriptCtrl.selectedScriptIds.length > 0 ? 'col-md-8' : 'col-md-12'">
+    <h2>Hello world</h2>
+      <list-scripts ontoggle="ScriptCtrl.ontoggle(selectedJobs)" job-type="{{ jobType }}"></list-scripts>
     </div>
-    <div class="col-md-4" ng-if="ScriptsCtrl.selectedJobIds.length > 0">
-      <div ng-repeat="scriptId in ScriptsCtrl.selectedScriptIds track by scriptId">
-        <view-job-details script-id="scriptId" onclose="ScriptsCtrl.onclose(scriptId)"></view-script-details>
+    <div class="col-md-4" ng-if="ScriptCtrl.selectedJobIds.length > 0">
+      <div ng-repeat="scriptId in ScriptCtrl.selectedScriptIds track by scriptId">
+        <view-script-details script-id="scriptId" onclose="ScriptCtrl.onclose(scriptId)"></view-script-details>
       </div>
     </div>
   </div>

@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('Script')
+    .module('flowScripts')
     .directive('viewScriptDetails', viewScriptDetails);
 
   viewScriptDetails.$inject = [];
 
   function viewScriptDetails() {
     return {
-      templateUrl: 'components/scripts/views/view-script-details.view.html',
+      templateUrl: 'components/scripts/script/views/view-script-details.view.html',
       restrict: 'E',
       scope: {
         scriptId: '=', // the ID of the Script to view details of

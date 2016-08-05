@@ -1,0 +1,14 @@
+<div class="kue-list-jobs">
+
+   <!-- Refresh flows -->
+  <button class="btn btn-default" ng-click="listJobsCtrl.refreshJobs()">
+    <i class="fa fa-refresh" aria-hidden="true"></i> Refresh Jobs
+  </button>
+
+  <!-- Datatables -->
+  <table datatable class="table table-striped table-bordered" width="100%"
+         dt-options="listScriptCtrl.dtOptions"
+         dt-columns="listScriptCtrl.dtColumns"
+         dt-instance="listScriptCtrl.dtInstance">
+  </table>
+</div>

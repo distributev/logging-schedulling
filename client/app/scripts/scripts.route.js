@@ -12,7 +12,7 @@ angular.module('angularFullstackApp')
         url: '/',
         templateUrl: 'app/scripts/scripts.html',
         controller: 'ScriptsController',
-        controllerAs: 'sm',
+        controllerAs: 'vm',
         breadcrumb: {
           label: 'Scripts'
         }
@@ -21,7 +21,7 @@ angular.module('angularFullstackApp')
         url: '/:scriptType',
         templateUrl: 'app/scripts/scripts.html',
         controller: 'ScriptsController',
-        controllerAs: 'sm',
+        controllerAs: 'vm',
         resolve: {
           scriptType: ['$stateParams', function($stateParams) {
             return $stateParams.scriptType;
