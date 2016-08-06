@@ -15,10 +15,7 @@
         scriptType: '@', // if provided the rendered table will list only the scripts of type scriptType; otherwise render all scripts no matter of their type
         perPage: '@', // number of rows to display on a single page when using pagination. - default value is 10
         autoRefreshInterval: '@',
-        ontoggle: '&',
-        whichScripts : '@',
-        showNextRun: '@',
-        showState : '@'
+        ontoggle: '&'
       },
       controller: 'ListScriptsController',
       controllerAs: 'listScriptsCtrl'
