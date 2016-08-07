@@ -1,5 +1,5 @@
 /* jshint camelcase: false */
-(function() {
+/*(function() {
   'use strict';
 
   angular
@@ -17,3 +17,4 @@
       return factory;
     }
 })();
+*/

@@ -13,6 +13,7 @@ export default function(app) {
   app.use('/api/users', require('./api/user'));
   app.use('/api/app', require('./api/app'));
   app.use('/api/jobs', require('./api/jobs'));
+  app.use('/api/scripts', require('./api/scripts'));
   app.use('/api/kue', kue.app);
 
   app.use('/auth', require('./auth').default);

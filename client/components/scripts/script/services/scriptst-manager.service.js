@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
   'use strict';
 
   angular
@@ -14,10 +14,8 @@
 
       var scriptsManager = {
           getScripts : function(){
-            var scripts =  resources.get({},function(){
-                console.log(scripts);
-            });
-            return scripts;
+            var scripts =  resources.query();
+            return scripts.$promise;
           }    
       };
 
@@ -25,3 +23,4 @@
     };
   }
 })();
+*/

@@ -1,0 +1,1 @@
+{"version":3,"sources":["app/admin/admin.module.js"],"names":[],"mappings":"AAAA;;AAEA,QAAQ,MAAR,CAAe,2BAAf,EAA4C,CAAC,0BAAD,EAA6B,WAA7B,CAA5C","file":"app/admin/admin.module.js","sourcesContent":["'use strict';\n\nangular.module('angularFullstackApp.admin', ['angularFullstackApp.auth', 'ui.router']);\n"],"sourceRoot":"/source/"}

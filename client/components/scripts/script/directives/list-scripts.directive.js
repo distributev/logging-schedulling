@@ -19,6 +19,7 @@
       },
       controller: 'ListScriptsController',
       controllerAs: 'listScriptsCtrl'
+
     };
   }
 })();
