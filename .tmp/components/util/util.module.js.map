@@ -1,1 +1,0 @@
-{"version":3,"sources":["components/util/util.module.js"],"names":[],"mappings":"AAAA;;AAEA,QAAQ,MAAR,CAAe,0BAAf,EAA2C,EAA3C","file":"components/util/util.module.js","sourcesContent":["'use strict';\n\nangular.module('angularFullstackApp.util', []);\n"],"sourceRoot":"/source/"}

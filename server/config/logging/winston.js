@@ -28,8 +28,8 @@ function tsFormat(){
     var time = timestamp.toLocaleTimeString();
     return date + " " + time;
 }
-;
-  // Configure the logger for `info` 
+
+ // Configure the logger for `info` 
 winston.loggers.add('info', {
     transports :[
        new (require('winston-daily-rotate-file'))({
@@ -76,7 +76,6 @@ if(DEBUG){
      winston.loggers.add('debug', {
     transports :[
        new (require('winston-daily-rotate-file'))({
-            formatter:formatter,
             filename: '../../logs/debug.log',
             timestamp: tsFormat,
             datePattern: 'dd-MM-yyyy',
@@ -88,7 +87,7 @@ if(DEBUG){
         })
     ]
   });
-     };
+     }
 //log object
 var log = {};
 
@@ -97,18 +96,18 @@ var log = {};
 log.info = function(arg1){
     var logger = winston.loggers.get('info');
      logger.info.apply(this,arguments);
-} ;
+} 
 log.warning = function(arg1){
     var logger = winston.loggers.get('warn');
      logger.warn.apply(this,arguments);
-} ;
+} 
 log.error = function(arg1){
     var logger = winston.loggers.get('error');
      logger.error.apply(this,arguments);
-} ;
+} 
 log.debug = function(arg1){
     var logger = winston.loggers.get('debug');
      logger.debug.apply(this,arguments);
-} ;
+} 
 
 module.exports = log;

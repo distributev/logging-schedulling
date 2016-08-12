@@ -9,14 +9,14 @@
 
   function ListScriptsController($scope, $q, $interval, $compile, $uibModal, DTOptionsBuilder, DTColumnBuilder, $resource) {
     var scope = $scope;
-    var refreshDataInterval = null;
+    var refreshDataInterval = 10000;
     var vm = this;
     var titleHtml = vm.scriptType;
     //vm.data = Script.getScripts();
     
     var perPage = vm.perPage || 10;
     //refres data
-    $interval(reloadData ,10000);
+    $interval(reloadData ,refreshDataInterval);
 
     vm.dtOptions = DTOptionsBuilder.fromFnPromise(function() {
         return $resource('api/scripts/').query().$promise;
