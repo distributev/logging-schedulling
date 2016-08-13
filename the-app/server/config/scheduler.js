@@ -5,7 +5,7 @@ import config from './environment';
 import fs  from 'fs';
 import path from 'path';
 var rootPath = path.dirname(__dirname) + path.sep + 'flows' + path.sep;
-var q  = kue_scheduler.createQueue({
+var q  = kueScheduler.createQueue({
 	disableSearch: true,
   redis: require(path.join(config.root, config.redis.configPath)).redis
 });
