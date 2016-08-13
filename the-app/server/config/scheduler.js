@@ -14,48 +14,55 @@ var q  = kue_scheduler.createQueue({
 	q.createJob('startup' , {
 		'location' : rootPath + '010 - startup' + path.sep + 'script1.js',
 		'nextRun' : 'reStart',
-	})   'activated' : true
+		'activated' : true
+	})   
 	 .priority('high')
 	 .now();
 
 	q.createJob('startup' , {
 		'location' : rootPath + '010 - startup' + path.sep + 'script2.js',
 		'nextRun' : 'reStart',
-	})   'activated' : true
+		'activated' : true
+	})   
 	 .priority('high')
 	 .now();
 	q.createJob('startup' , {
 		'location' : rootPath + '010 - startup' + path.sep + 'script3.js',
 		'nextRun' : 'reStart',
-	})   'activated' : true
+		'activated' : true
+	})   
 	 .priority('high')
 	 .now(); 															
 //create schedule jobs
 	q.createJob('schedules' , {
 		'location' : rootPath + '020 - schedules' +path.sep + 'print hello world from laterjs every 15 seconds.js',
 		'nextRun' : 15,
-	})   'activated' : true
+		'activated' : true
+	})   
 	 .priority('high')
 	 .every('15 seconds');
 
 	 q.createJob('schedules' , {
 		'location' : rootPath + '020 - schedules' + path.sep + 'print hello world from cron every 10 seconds',
 		'nextRun' : 10,
-	})   'activated' : true
+		'activated' : true
+	})   
 	 .priority('high')
 	 .every('15 seconds');
  //shutdown jobs
  	q.createJob('shutdown' , {
 		'location' : rootPath + '015 - shutdown' + path.sep + 'shutdown.js',
 		'nextRun' : 'shutdown',
-	})   'activated' : true
+		'activated' : true
+	})   
 	 .priority('high')
 	 .every('1 seconds');
 
 	q.createJob('shutdown' , {
 		'location' : rootPath + '015 - shutdown' + path.sep + 'shutdown1.js',
 		'nextRun' : 'shutdown',
-	})   'activated' : true
+		'activated' : true
+	})   
 	 .priority('high')
 	 .every('1 seconds');
 
@@ -101,7 +108,7 @@ function runScript(job,done){
             var fstats2 = fs.statSync(fileFullPath);
             if(fstats2){
             	//execute script
-            	execScript(file);
+            	exeScript(file);
 
             }else{
             	done('could not run script because: ' + resolvePath + 'does not exist');
@@ -109,11 +116,11 @@ function runScript(job,done){
 		}
 		//check if location is a file
 		if(fstats.isFile()){
-			execScript(path.resolve(fileFullPath));
+			exeScript(path.resolve(fileFullPath));
 		}
 	}
 }
 
-function execScript(scriptPath){
+function exeScript(scriptPath){
 
 }
