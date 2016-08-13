@@ -44,8 +44,8 @@
         vm.dtInstance.reloadData(callback, resetPaging);
     }
 
-    function callback(json) {
-        console.log(json);
+    function callback() {
+        //console.log(json);
     }
     
 
@@ -53,7 +53,7 @@
           //print out the columns
           vm.dtColumns = [
         DTColumnBuilder.newColumn(null).withTitle(titleHtml).notSortable().withOption('width', '15px')
-          .renderWith(function(data, type, full) {
+          .renderWith(function() {
             return '<input type="checkbox" ng-click="listJobsCtrl.toggleOne()">';
           }),
         DTColumnBuilder.newColumn('state').withTitle('State').notSortable(),
