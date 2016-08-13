@@ -1,0 +1,70 @@
+<div class="kue-list-jobs">
+  <!--<p class="text-danger">You selected the following rows:</p>-->
+  <!--<pre>{{ listJobsCtrl.selected |json }}</pre>-->
+
+  <!-- Job types -->
+  <div class="btn-group types-dropdown" uib-dropdown ng-if="!jobType.length">
+    <button type="button" class="btn btn-default" uib-dropdown-toggle>
+      <span class="text-capitalize" ng-bind="listJobsCtrl.selectedJobType.label"></span> <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+      <li role="menuitem">
+        <a href="#" ng-click="listJobsCtrl.toggleType({ label: 'Show All', value: '' })">
+          <span class="text-capitalize">Show All Jobs</span>
+        </a>
+      </li>
+      <li class="divider"></li>
+      <li role="menuitem" ng-repeat="jobType in listJobsCtrl.jobTypes">
+        <a href="#" ng-click="listJobsCtrl.toggleType(jobType)">
+          Show '<span class="text-capitalize" ng-bind="jobType.label"></span>' Jobs
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- States -->
+  <div class="btn-group states-dropdown" uib-dropdown>
+    <button type="button" class="btn btn-default" uib-dropdown-toggle>
+      <span class="text-capitalize" ng-bind="listJobsCtrl.selectedState.label"></span> <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+      <li role="menuitem">
+        <a href="#" ng-click="listJobsCtrl.toggleState({ label: 'Show All', value: '' })">
+          <span class="text-capitalize">Show All States</span>
+          <span class="badge pull-right label-default" ng-bind="listJobsCtrl.showAllStatesCount"></span>
+        </a>
+      </li>
+      <li class="divider"></li>
+      <li role="menuitem" ng-repeat="jobStat in listJobsCtrl.jobStats.groupOne | orderBy:'order'">
+        <a href="#" ng-click="listJobsCtrl.toggleState(jobStat)">
+          <span text-capitalize  ng-bind="jobStat.label"></span>
+          <span class="badge pull-right {{ jobStat.className }}" ng-bind="jobStat.count"></span>
+        </a>
+      </li>
+      <li class="divider"></li>
+      <li role="menuitem" ng-repeat="jobStat in listJobsCtrl.jobStats.groupTwo | orderBy:'order'">
+        <a href="#" ng-click="listJobsCtrl.toggleState(jobStat)">
+          <span text-capitalize  ng-bind="jobStat.label"></span>
+          <span class="badge pull-right {{ jobStat.className }}" ng-bind="jobStat.count"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Delete selected jobs -->
+  <button class="btn btn-default" ng-click="listJobsCtrl.deleteSelectedJobs()">
+    <i class="fa fa-trash" aria-hidden="true"></i> Delete Selected
+  </button>
+
+  <!-- Refresh jobs -->
+  <button class="btn btn-default" ng-click="listJobsCtrl.refreshJobs()">
+    <i class="fa fa-refresh" aria-hidden="true"></i> Refresh Jobs
+  </button>
+
+  <!-- Datatables -->
+  <table datatable class="table table-striped table-bordered" width="100%"
+         dt-options="listJobsCtrl.dtOptions"
+         dt-columns="listJobsCtrl.dtColumns"
+         dt-instance="listJobsCtrl.dtInstance">
+  </table>
+</div>

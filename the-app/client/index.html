@@ -1,0 +1,157 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(client) app/vendor.css -->
+      <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+      <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+      <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/AdminLTE.min.css" />
+      <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/_all-skins.min.css" />
+      <link rel="stylesheet" href="bower_components/datatables/media/css/dataTables.bootstrap.min.css" />
+      <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,client}) app/app.css -->
+      <link rel="stylesheet" href="app/app.css">
+      <!-- injector:css -->
+      <!-- endinjector -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="angularFullstackApp">
+    <!--[if lt IE 7]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <admin-lte></admin-lte>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-XXXXX-X');
+      ga('send', 'pageview');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- build:js({client,node_modules}) app/vendor.js -->
+      <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-socket-io/socket.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+      <script src="bower_components/AdminLTE/dist/js/app.js"></script>
+      <script src="bower_components/datatables/media/js/jquery.dataTables.js"></script>
+      <script src="bower_components/datatables/media/js/dataTables.bootstrap.min.js"></script>
+      <script src="bower_components/angular-datatables/dist/angular-datatables.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.js"></script>
+      <script src="bower_components/angular-datatables/dist/plugins/select/angular-datatables.select.js"></script>
+      <script src="bower_components/moment/moment.js"></script>
+      <!-- endbower -->
+      <script src="socket.io-client/socket.io.js"></script>
+    <!-- endbuild -->
+    <!-- build:js(.tmp) app/app.js -->
+      <script src="app/app.js"></script>
+      <!-- injector:js -->
+      <script src="app/admin/admin.module.js"></script>
+      <script src="components/auth/auth.module.js"></script>
+      <script src="components/jobs/kue/kue.module.js"></script>
+      <script src="components/scripts/script/script.module.js"></script>
+      <script src="components/themes/admin-lte/theme.module.js"></script>
+      <script src="components/util/util.module.js"></script>
+      <script src="app/account/account.js"></script>
+      <script src="app/account/login/login.controller.js"></script>
+      <script src="app/account/settings/settings.controller.js"></script>
+      <script src="app/account/signup/signup.controller.js"></script>
+      <script src="app/admin/admin.controller.js"></script>
+      <script src="app/admin/admin.router.js"></script>
+      <script src="app/app.constant.js"></script>
+      <script src="app/jobs/jobs.controller.js"></script>
+      <script src="app/jobs/jobs.route.js"></script>
+      <script src="app/main/main.controller.js"></script>
+      <script src="app/main/main.js"></script>
+      <script src="app/scripts/scripts.controller.js"></script>
+      <script src="app/scripts/scripts.route.js"></script>
+      <script src="app/services/menu.client.service.js"></script>
+      <script src="components/auth/auth.service.js"></script>
+      <script src="components/auth/interceptor.service.js"></script>
+      <script src="components/auth/router.decorator.js"></script>
+      <script src="components/auth/user.service.js"></script>
+      <script src="components/confirmation-dialog/confirmation-modal.controller.js"></script>
+      <script src="components/footer/footer.directive.js"></script>
+      <script src="components/jobs/kue/controllers/jobs.controller.js"></script>
+      <script src="components/jobs/kue/controllers/list-jobs.controller.js"></script>
+      <script src="components/jobs/kue/controllers/start-stop-jobs.controller.js"></script>
+      <script src="components/jobs/kue/controllers/view-job-details.controller.js"></script>
+      <script src="components/jobs/kue/directives/jobs.directive.js"></script>
+      <script src="components/jobs/kue/directives/list-jobs.directive.js"></script>
+      <script src="components/jobs/kue/directives/start-stop-jobs.directive.js"></script>
+      <script src="components/jobs/kue/directives/view-job-details.directive.js"></script>
+      <script src="components/jobs/kue/services/job.service.js"></script>
+      <script src="components/jobs/kue/services/jobs-manager.service.js"></script>
+      <script src="components/modal/modal.service.js"></script>
+      <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+      <script src="components/navbar/navbar.controller.js"></script>
+      <script src="components/navbar/navbar.directive.js"></script>
+      <script src="components/oauth-buttons/oauth-buttons.controller.js"></script>
+      <script src="components/oauth-buttons/oauth-buttons.directive.js"></script>
+      <script src="components/scripts/script/controllers/list-scripts.controller.js"></script>
+      <script src="components/scripts/script/controllers/scripts.controller.js"></script>
+      <script src="components/scripts/script/controllers/view-script-details.controller.js"></script>
+      <script src="components/scripts/script/directives/list-scripts.directive.js"></script>
+      <script src="components/scripts/script/directives/scripts.directive.js"></script>
+      <script src="components/scripts/script/directives/view-scripts-details.directive.js"></script>
+      <script src="components/scripts/script/services/scripts.service.js"></script>
+      <script src="components/scripts/script/services/scriptst-manager.service.js"></script>
+      <script src="components/socket/socket.service.js"></script>
+      <script src="components/themes/admin-lte/controllers/control-sidebar.controller.js"></script>
+      <script src="components/themes/admin-lte/controllers/main-nav.controller.js"></script>
+      <script src="components/themes/admin-lte/controllers/main-sidebar.controller.js"></script>
+      <script src="components/themes/admin-lte/controllers/theme.controller.js"></script>
+      <script src="components/themes/admin-lte/directives/breadcrumbs.directive.js"></script>
+      <script src="components/themes/admin-lte/directives/control-sidebar.directive.js"></script>
+      <script src="components/themes/admin-lte/directives/dashboard.directive.js"></script>
+      <script src="components/themes/admin-lte/directives/login.directive.js"></script>
+      <script src="components/themes/admin-lte/directives/main-footer.directive.js"></script>
+      <script src="components/themes/admin-lte/directives/main-nav.directive.js"></script>
+      <script src="components/themes/admin-lte/directives/main-sidebar.directive.js"></script>
+      <script src="components/themes/admin-lte/directives/signup.directive.js"></script>
+      <script src="components/themes/admin-lte/directives/theme.directive.js"></script>
+      <script src="components/themes/admin-lte/services/theme-style.service.js"></script>
+      <script src="components/util/util.service.js"></script>
+      <!-- endinjector -->
+    <!-- endbuild -->
+  </body>
+</html>
